@@ -1,0 +1,14 @@
+#if($errors)
+    $errors
+#end
+
+#if($details)
+    <h1>Hello $details.name of age $details.age</h1>
+#end
+
+<form method="POST" action="" command="personDetails">
+    <input type="text" name="name"/>
+    <input type="text" name="age"/>
+    <input type="submit"/>
+</form>
+
