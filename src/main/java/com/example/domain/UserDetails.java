@@ -9,7 +9,7 @@ import javax.persistence.Id;
 import javax.validation.constraints.NotNull;
 
 @Entity
-public class PersonDetails {
+public class UserDetails {
 
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)

@@ -1,9 +1,5 @@
-#if($errors)
-    $errors
-#end
-
 #if($details)
-    <h1>Hello $details.name of age $details.age</h1>
+<h1>Hello $details.name of age $details.age</h1>
 #end
 
 <form method="POST" action="" command="personDetails">

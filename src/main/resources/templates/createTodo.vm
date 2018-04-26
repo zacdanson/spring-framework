@@ -1,0 +1,8 @@
+#if($errors)
+    $errors
+#end
+
+<div>
+    <input value="" name="todo" />
+    <button>Add Todo</button>
+</div>

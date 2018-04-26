@@ -1,6 +1,5 @@
 package com.example.controller;
-
-import com.example.domain.PersonDetails;
+import com.example.domain.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -10,28 +9,29 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import javax.validation.Valid;
 
 @Controller
-public class Hello {
+public class CreateUser {
 
-    @RequestMapping(value = "/hello", method = RequestMethod.GET)
-    public String sayHello(Model model) {
-        return "helloView";
+    @RequestMapping(value = "/createUser", method = RequestMethod.GET)
+    public String createUser(Model model) {
+        return "createUserView";
     }
 
-    @RequestMapping(value = "/hello", method = RequestMethod.POST)
+    @RequestMapping(value = "/createUser", method = RequestMethod.POST)
     public String sayHelloWithDetails(
             Model model,
-            @Valid PersonDetails personDetails,
+            @Valid UserDetails details,
             BindingResult bindingResult) {
 
         if ( bindingResult.hasErrors() ) {
             model.addAttribute("errors", "You have errors!");
-            return "helloView";
+            return "createUserView";
         }
 
-        model.addAttribute("details", personDetails);
+        model.addAttribute("details", details);
 
-        return "helloView";
+        return "createUserView";
     }
+
 }
 
 

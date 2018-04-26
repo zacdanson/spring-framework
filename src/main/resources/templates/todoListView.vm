@@ -1,0 +1,8 @@
+#if($errors)
+    $errors
+#end
+
+<div class="todo-list-container">
+    <div class="todo-list-header">To-do</div>
+    <div class="todo-list-body"></div>
+</div>
