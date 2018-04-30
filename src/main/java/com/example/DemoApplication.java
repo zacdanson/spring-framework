@@ -14,19 +14,16 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 import javax.sql.DataSource;
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
 
 
 @SpringBootApplication
 @EnableScheduling
 @ComponentScan
-@Configuration
 public class DemoApplication {
-  @Bean
-  @Primary
-  @ConfigurationProperties(prefix = "spring.datasource")
-  public DataSource dataSource() {
-    return DataSourceBuilder.create().build();
-  }
+
 
 	public static void main(String[] args) {
 		SpringApplication.run(DemoApplication.class, args);
