@@ -1,0 +1,55 @@
+a{
+    text-decoration: none !important;
+    color:inherit;
+}
+
+td{
+    text-align: center;
+}
+
+th{
+    text-align: center;
+}
+
+.table{
+    border:1px solid #ebebeb;
+}
+
+.form-group-container{
+
+}
+
+.todo-list-container{
+    justify-content: center;
+}
+
+.form-container{
+    justify-content: center;
+}
+
+
+.todo-header{
+    padding:20px;
+}
+
+.todo-description{
+    margin-right:5px;
+}
+
+.todo-button{
+    margin:5px;
+}
+
+.table-icon{
+    text-align: center;
+    font-size:1.5rem;
+}
+
+.table-text-buttons{
+    color: #8a8a8a;
+}
+
+.table-text-buttons:hover{
+    color: #464646;
+    cursor: pointer;
+}

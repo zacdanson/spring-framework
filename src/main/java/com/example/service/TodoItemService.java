@@ -2,9 +2,10 @@ package com.example.service;
 
 import com.example.domain.TodoItem;
 import com.example.domain.TodoItemRepository;
-import com.sun.tools.javac.comp.Todo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.Date;
 import java.util.List;
 
 
@@ -22,8 +23,8 @@ public class TodoItemService {
         return this.todoItemRepository.findTodoById(id);
     }
 
-    public List <TodoItem> getTodoByUid (Integer uid){
-        return this.todoItemRepository.getTodoByUid(uid);
+    public List <TodoItem> getTodoByName (String name){
+        return this.todoItemRepository.getTodoByName(name);
     }
 
     public void deleteTodoById (Integer id){
@@ -37,5 +38,19 @@ public class TodoItemService {
     public void updateTodo (TodoItem todoItem){
         this.todoItemRepository.save(todoItem);
     }
+
+    public void updateTimeToComplete(Integer id){
+
+      TodoItem todo = this.getTodoById(id);
+      if(todo.getStatus().equals("false")){
+        Integer time = todo.getTimeToComplete();
+        Integer newTime = time+1;
+        todo.setTimeToComplete(newTime);
+        this.todoItemRepository.save(todo);
+
+      }
+    }
+
+
 
 }

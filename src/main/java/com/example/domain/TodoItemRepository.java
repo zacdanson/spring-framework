@@ -1,6 +1,9 @@
 package com.example.domain;
 
+import com.sun.tools.javac.comp.Todo;
 import org.springframework.data.repository.CrudRepository;
+
+import java.util.Date;
 import java.util.List;
 
 
@@ -13,6 +16,7 @@ public interface TodoItemRepository
 
     TodoItem findTodoById (Integer id);
 
-    List <TodoItem> getTodoByUid (Integer uid);
+    List <TodoItem> getTodoByName (String name);
 
+    
 }

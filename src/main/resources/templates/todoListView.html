@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <title>Todo List</title>
+    <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/simple-line-icons/2.4.1/css/simple-line-icons.css"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/main.css}"/>
+
+</head>
+    <body>
+    <div class="todo-header">
+        <div th:if="${todos.isEmpty()}">
+            <p>There is no todo's in the list.</p>
+        </div>
+        <h1>Todo List</h1>
+    </div>
+
+    <div class="todo-list-container row">
+        <table class="table table-striped col-sm-10">
+            <tr scope="row">
+                <th scope="col">Completed</th>
+                <th scope="col">Description</th>
+                <th scope="col">Created By</th>
+                <th scope="col">Time To Complete</th>
+                <th scope="col"></th>
+                <th scope="col"></th>
+            </tr>
+            <tr th:each="todo : ${todos}">
+                <td class="table-icon">
+                    <a class="icon-check" th:href="@{'/completed/'+${todo.id}}" th:if="${todo.status.equals('true')}"></a>
+                    <a class="icon-close" th:href="@{'/completed/'+${todo.id}}" th:if="${todo.status.equals('false')}"></a>
+                </td>
+                <td th:text="${todo.description}"></td>
+                <td th:text="${todo.name}"></td>
+                <td th:text="${todo.timeToComplete}+' days'"></td>
+                <td><a th:href="@{'/delete/' + ${todo.id}}" class="table-text-buttons">Delete</a></td>
+                <td><a th:href="@{'/update/' + ${todo.id}}" class="table-text-buttons">Edit</a></td>
+            </tr>
+        </table>
+    </div>
+    <div class="row form-container">
+        <form class="col-sm-10 form-inline" th:object="${newTodo}" method="POST">
+            <div class="form-group form-group-container pull-right">
+                <input class="form-control todo-description" th:field="*{description}" placeholder="enter todo description.."/>
+                <input class="form-control todo-name" th:field="*{name}" placeholder="enter name"/>
+                <button class="btn btn-primary todo-button" type="submit" th:if="${!editing}">add</button>
+                <button class="btn btn-primary todo-button" type="submit" th:if="${editing}">update</button>
+                <a th:href="@{'/'}"><button class="btn btn-secondary todo-button" th:if="${editing}">cancel</button></a>
+            </div>
+            <div class="warnings">
+                <div class="alert alert-danger" th:if="${#fields.hasErrors('description')}">
+                    description cannot be empty.
+                </div>
+                <div class="alert alert-danger" th:if="${#fields.hasErrors('name')}">
+                    name cannot be empty.
+                </div>
+            </div>
+        </form>
+    </div>
+    </body>
+</html>
